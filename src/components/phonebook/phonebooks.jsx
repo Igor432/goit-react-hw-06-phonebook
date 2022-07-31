@@ -9,7 +9,8 @@ class Phonebook extends Component {
     state = {
         contacts: [],
         name: '',
-        number: ''
+        number: '',
+        filter: '',
       }
 
 
@@ -26,32 +27,41 @@ this.setState({[name]: value})
 
     onSubmit = (e) => {
         e.preventDefault();
-        const list = document.querySelector('contacts_list')
         const {name, number} = this.state
-        const {contacts} = this.state
-        
-       this.setState({contacts: [...contacts, {id: nanoid(), name: name, number: number}] }, console.log(this.state.contacts))
-       
-
-       
+        const {contacts} = this.state       
+       this.setState({contacts: [...contacts, {id: nanoid(), name: name, number: number}] }, console.log(this.state.contacts))     
     }
 
+
+    onFilter = (e) => {
+        const {contacts} = this.state
+        const filterValue = e.target.value
+        console.log(filterValue)
+        this.setState({filter: filterValue})
+        console.log(document.querySelector('.item_name'))
+
+        const item_name = (document.querySelector('.item_name'))
+
+
+}
 
 
     makeList = (key) =>  {
-        
-        return (
-            <ul class='contacts_list'>
-    
-       { key.map(contact => (
-            <li key={contact.id} class='contact_item'>{contact.name} <br />{contact.number}</li>
-    
-        ))}
-    
-        </ul>
-        )
-    }
 
+
+    return (
+        <ul class='contacts_list'>
+
+   { key.map(contact => (
+        <li key={contact.id} class='contact_item'>
+            
+         <p class='item_name'>{contact.name} </p>   <p clas='item_number'>{contact.number}</p></li>
+
+    ))}
+
+    </ul>
+    )
+}
 
 
     
@@ -87,6 +97,15 @@ const {contacts} = this.state
   <button type="submit" class='submit_button'>Add Contact</button>
 </form>
 <div class='contacts'>
+
+<input
+  type="filter"
+  name="filter"
+  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+  title="Filter your contacts"
+  required
+  onChange={this.onFilter}
+/>
    {this.makeList(this.state.contacts)}
 </div>
 
