@@ -1,12 +1,24 @@
 .forma {
     display: flex;
     flex-direction: column;
+  
+    padding: 20px 50px 20px 50px;
 }
 
-.forma input {
+
+
+.submit_button {
     margin-top: 20px;
 }
 
-.submit_button {
-    margin-top: 40px;
+p {
+    font-size: 20px;
+    margin: 0px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+
+.contact_item {
+    font-size: 20px;
 }
