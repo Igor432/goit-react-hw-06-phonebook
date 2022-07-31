@@ -1,0 +1,12 @@
+.forma {
+    display: flex;
+    flex-direction: column;
+}
+
+.forma input {
+    margin-top: 20px;
+}
+
+.submit_button {
+    margin-top: 40px;
+}
