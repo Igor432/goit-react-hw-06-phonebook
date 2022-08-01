@@ -43,7 +43,7 @@ this.setState({[name]: value})
 
 
     makeList = (key) =>  {
-let {filter} = this.state
+const {filter} = this.state
 
 if (filter === '') {
 
@@ -64,7 +64,7 @@ if (filter === '') {
 
    } else {
 
-    const filteredContact = key.filter(contact => contact.name.includes(filter))
+    const filteredContact = key.filter(contact => contact.name.toLowerCase().includes(filter.toLocaleLowerCase()))
 console.log(filteredContact)
     return (
         <ul class='contacts_list'>
