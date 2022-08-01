@@ -34,7 +34,7 @@ this.setState({[name]: value})
 
 
     onFilter = (e) => {
-        const {contacts} = this.state
+    
         const filterValue = e.target.value
         console.log(filterValue)
         this.setState({filter: filterValue})
@@ -47,6 +47,7 @@ this.setState({[name]: value})
 
 
     makeList = (key) =>  {
+
 
 
     return (
