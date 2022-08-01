@@ -9,11 +9,20 @@ position: top;
 
 .name_input, .number_input, .filter_input  {
     height: 50px;
-    border: 0.3px;
+    border: 1px;
     width: 340px;
     font-size: 26px;
     border-radius: 12px;
+  
 }
+
+.name_input:focus, .number_input:focus, .filter_input:focus {
+
+outline: none !important;
+border: 1px  rgb(186, 38, 38);
+box-shadow: 0 0 10px #719ECE;
+}
+
 
 .filter_input {
     margin-top: 15px;
@@ -54,15 +63,12 @@ p {
 .contact_item {
     font-size: 23px;
     display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
 
 }
 
-.item_name {
 
-    margin-right: 15px;
-}
 
 .item_name::after {
     content: ':';
@@ -82,7 +88,7 @@ padding-right: 50px;
 .delete_button {
 
     height: 30px;
-    width: 120px;
+    width: 100px;
     border-radius: 12px;
     border: 0.2px;
 }

@@ -27,9 +27,11 @@ this.setState({[name]: value})
 
     onSubmit = (e) => {
         e.preventDefault();
+     
         const {name, number} = this.state
         const {contacts} = this.state       
-       this.setState({contacts: [...contacts, {id: nanoid(), name: name, number: number}] }, console.log(this.state.contacts))     
+       this.setState({contacts: [...contacts, {id: nanoid(), name: name, number: number}] }, console.log(this.state.contacts)) 
+       e.target.reset();    
     }
 
 
