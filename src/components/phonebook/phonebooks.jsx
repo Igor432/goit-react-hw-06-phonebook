@@ -38,10 +38,10 @@ this.setState({[name]: value})
         const filterValue = e.target.value
         console.log(filterValue)
         this.setState({filter: filterValue})
-        console.log(document.querySelector('.item_name'))
+      
 
         const item_name = (document.querySelector('.item_name'))
-
+        console.log(item_name)
 
 }
 
@@ -106,7 +106,7 @@ const {contacts} = this.state
   required
   onChange={this.onFilter}
 />
-   {this.makeList(this.state.contacts)}
+   {this.makeList(contacts)}
 </div>
 
 </div>
