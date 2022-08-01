@@ -47,8 +47,9 @@ this.setState({[name]: value})
 
 
     makeList = (key) =>  {
+let {filter} = this.state
 
-
+if (filter === '') {
 
     return (
         <ul class='contacts_list'>
@@ -62,8 +63,28 @@ this.setState({[name]: value})
 
     </ul>
     )
-}
 
+   } else {
+
+    const filteredContact = key.filter(contact => contact.name.includes(filter))
+console.log(filteredContact)
+    return (
+        <ul class='contacts_list'>
+
+   { filteredContact.map(contact => (
+        <li key={contact.id} class='contact_item'>
+            
+         <p class='item_name'>{contact.name} </p>   <p clas='item_number'>{contact.number}</p></li>
+
+    ))}
+
+    </ul>
+    )
+
+   }
+
+}
+    
 
     
 render () {
