@@ -17,6 +17,9 @@
 
 .filter_input {
     margin-top: 15px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -46,10 +49,14 @@ p {
 
 }
 
+
+
 .contact_item {
     font-size: 23px;
     display: flex;
-   align-items: center;
+justify-content: space-around;
+align-items: center;
+
 }
 
 .item_name {
@@ -64,15 +71,26 @@ p {
 
 
 .contacts {
-    padding-left: 50px;
+padding-left: 50px;
+padding-right: 50px;
+    
     background-color: rgba(213, 213, 34, 0.594);
     padding-bottom: 20px;
+  
 }
 
 .delete_button {
-    margin-left: 40px;
+
     height: 30px;
     width: 120px;
     border-radius: 12px;
     border: 0.2px;
+}
+
+.input_tag {
+    padding-top: 30px;
+}
+
+.contacts_list {
+    padding-inline-start: 0px;
 }

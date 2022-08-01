@@ -98,7 +98,7 @@ const {contacts} = this.state
     return (
 <div class="main_div">
 <form onSubmit={this.onSubmit} class='forma'>
-    <p>Name</p>
+    <p class="input_tag">Name</p>
     <input
     type="text"
     name="name"
@@ -108,7 +108,7 @@ const {contacts} = this.state
     class='name_input'
   onChange={this.handleChange}
   />
-  <p>Number</p>
+  <p class="input_tag">Number</p>
   <input
   type="tel"
   name="number"
@@ -122,7 +122,7 @@ const {contacts} = this.state
   <button type="submit" class='submit_button'>Add Contact</button>
 </form>
 <div class='contacts'>
-<p>Search</p>
+<p >Search</p>
 <input
   type="filter"
   name="filter"
