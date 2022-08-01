@@ -38,10 +38,6 @@ this.setState({[name]: value})
         const filterValue = e.target.value
         console.log(filterValue)
         this.setState({filter: filterValue})
-      
-
-        const item_name = (document.querySelector('.item_name'))
-        console.log(item_name)
 
 }
 
@@ -57,7 +53,9 @@ if (filter === '') {
    { key.map(contact => (
         <li key={contact.id} class='contact_item'>
             
-         <p class='item_name'>{contact.name} </p>   <p clas='item_number'>{contact.number}</p></li>
+         <p class='item_name'>{contact.name} </p>   <p clas='item_number'>{contact.number}</p>
+         <button class='delete_button' type="button" onClick>Delete</button>
+         </li>
 
     ))}
 
@@ -74,7 +72,10 @@ console.log(filteredContact)
    { filteredContact.map(contact => (
         <li key={contact.id} class='contact_item'>
             
-         <p class='item_name'>{contact.name} </p>   <p clas='item_number'>{contact.number}</p></li>
+         <p class='item_name'>{contact.name} </p><p class='item_number'>{contact.number}</p>
+         
+         <button class='delete' type="button" onClick>Delete</button>
+         </li>
 
     ))}
 
@@ -104,6 +105,7 @@ const {contacts} = this.state
     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     required
+    class='name_input'
   onChange={this.handleChange}
   />
   <p>Number</p>
@@ -113,20 +115,23 @@ const {contacts} = this.state
   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
   required
+  class='number_input'
   onChange={this.handleChange}
 />
 
   <button type="submit" class='submit_button'>Add Contact</button>
 </form>
 <div class='contacts'>
-
+<p>Search</p>
 <input
   type="filter"
   name="filter"
   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
   title="Filter your contacts"
   required
+  class='filter_input'
   onChange={this.onFilter}
+
 />
    {this.makeList(contacts)}
 </div>
