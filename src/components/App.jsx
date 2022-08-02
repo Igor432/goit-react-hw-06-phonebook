@@ -1,18 +1,52 @@
-import Phonebook from "./phonebook/phonebooks";
+import { Component } from "react";
+import Filter from "./phonebook/Filter";
+import ContactList from "./phonebook/ContactList";
+import ContactForm from "../components/phonebook/ContactForm";
+import { nanoid } from "nanoid";
+
+class App extends Component {
+
+
+
+  state = {
+    contacts: [],
+    filter: '',
+  }
+
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const target = e.target
+    const name = target.name
+    const value = name.value
+    const numberVal = e.target.number.value
+   
+    const { contacts } = this.state       
+   this.setState({contacts: [...contacts, {id: nanoid(), name: value, number: numberVal}]}, console.log(this.state.contacts)) 
+   e.target.reset();    
+}
 
 
 
 
-export const App = () => {
+
+onFilter = (e) => {
+    
+  const filterValue = e.target.value
+  console.log(filterValue)
+  this.setState({filter: filterValue})
+
+}
 
 
 
 
-
+render(){
   return (
     <div
       style={{
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
@@ -21,8 +55,26 @@ export const App = () => {
 
 
     >
-  <Phonebook></Phonebook>
+<h1 style={{
+  fontSize: '45px',
+  margin: '0px'
+}}>Phonebook</h1>
+  <ContactForm onSubmit={this.onSubmit}/>
+
+  <h2 style={{
+    fontSize: '45px',
+    margin: '0px'
+
+  }}>Contacts</h2>
+  
+
+  
+  <ContactList Contacts={this.state.contacts}/>
 
     </div>
   );
+
+}
 };
+
+export default App
