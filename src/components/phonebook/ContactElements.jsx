@@ -11,7 +11,6 @@ const ContactElement = ({contact}) =>  {
             </li>)
     
        }
-    
-    
+
 
     export default ContactElement
