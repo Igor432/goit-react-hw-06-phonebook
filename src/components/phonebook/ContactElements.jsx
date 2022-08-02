@@ -1,9 +1,4 @@
 import style from '../phonebook/phonebook.module.css'
-import styled from 'styled-components'
-
-
-
-
 
 
 const ContactElement = ({contact}) =>  {
