@@ -22,9 +22,13 @@ class App extends Component {
     const name = target.name
     const value = name.value
     const numberVal = e.target.number.value
-   
     const { contacts } = this.state       
+
+    if (name === contacts.name) {
+      console.log("The name already exists!") 
+    } else {
    this.setState({contacts: [...contacts, {id: nanoid(), name: value, number: numberVal}]}, console.log(this.state.contacts)) 
+    }
    e.target.reset();    
 }
 
@@ -39,9 +43,6 @@ onFilter = (e) => {
   this.setState({filter: filterValue})
   console.log(this.state.filter)
 }
-
-
-
 
 
 
