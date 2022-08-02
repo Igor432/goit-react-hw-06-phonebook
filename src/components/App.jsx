@@ -3,6 +3,8 @@ import Filter from "./phonebook/Filter";
 import ContactList from "./phonebook/ContactList";
 import ContactForm from "../components/phonebook/ContactForm";
 import { nanoid } from "nanoid";
+import style from './phonebook/phonebook.module.css'
+
 
 class App extends Component {
 
@@ -39,12 +41,6 @@ onFilter = (e) => {
 }
 
 
-titleTag = {
-  fontSize: '45px',
-margin: '0px',
-display: 'block',
-
-}
 
 
 
@@ -63,10 +59,10 @@ render(){
 
 
     >
-<h1 style={{...this.titleTag}}>Phonebook</h1>
+<h1 className={style.title_tag}>Phonebook</h1>
   <ContactForm onSubmit={this.onSubmit}/>
 
-  <h2 style={{...this.titleTag}}>Contacts</h2>
+  <h2 className={style.title_tag}>Contacts</h2>
   
   <Filter onFilter={this.onFilter} contacts={this.state.contacts} />
   <ContactList Contacts={this.state.contacts} filterValue={this.state.filter}/>

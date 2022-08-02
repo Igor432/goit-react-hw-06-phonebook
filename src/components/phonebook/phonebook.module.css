@@ -16,6 +16,16 @@ position: top;
   
 }
 
+.title_tag {
+font-size: 24px;
+margin: 0px;
+width: 444px;
+background-color: rgba(213, 213, 34, 0.594);
+text-align: center;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
 .name_input:focus, .number_input:focus, .filter_input:focus {
 
 outline: none !important;
@@ -25,7 +35,7 @@ box-shadow: 0 0 10px #719ECE;
 
 
 .filter_input {
-    margin-top: 15px;
+  
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -36,7 +46,7 @@ box-shadow: 0 0 10px #719ECE;
 
 .filter {
     background-color: rgba(213, 213, 34, 0.594);
-    padding: 20px 50px 20px 50px;
+    padding: 20px 50px 0px 50px;
 }
 
 
@@ -75,7 +85,7 @@ p {
     display: flex;
 align-items: center;
 justify-content: space-around;
-
+height: auto;
 }
 
 
@@ -90,6 +100,7 @@ justify-content: space-around;
 display: flex;
 padding-inline-start: 0px;
 background-color: rgba(213, 213, 34, 0.594);
+height: auto;
 
 }
 
@@ -107,5 +118,4 @@ background-color: rgba(213, 213, 34, 0.594);
 
 .contacts-list {
     padding-inline-start: 0px;
-
 }
