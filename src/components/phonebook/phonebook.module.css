@@ -29,6 +29,14 @@ box-shadow: 0 0 10px #719ECE;
   display: flex;
   margin-left: auto;
   margin-right: auto;
+ 
+
+
+}
+
+.filter {
+    background-color: rgba(213, 213, 34, 0.594);
+    padding: 20px 50px 20px 50px;
 }
 
 
@@ -61,10 +69,12 @@ p {
 
 
 .contact_item {
+    width: 444px;
+   margin-top: 0px;
     font-size: 23px;
     display: flex;
-justify-content: space-between;
 align-items: center;
+justify-content: space-around;
 
 }
 
@@ -77,12 +87,10 @@ align-items: center;
 
 
 .contacts {
-padding-left: 50px;
-padding-right: 50px;
-    
-    background-color: rgba(213, 213, 34, 0.594);
-    padding-bottom: 20px;
-  
+display: flex;
+padding-inline-start: 0px;
+background-color: rgba(213, 213, 34, 0.594);
+
 }
 
 .delete_button {
@@ -97,6 +105,7 @@ padding-right: 50px;
     padding-top: 30px;
 }
 
-.contacts_list {
+.contacts-list {
     padding-inline-start: 0px;
+
 }

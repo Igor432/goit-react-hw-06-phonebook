@@ -15,11 +15,8 @@ code {
 }
 
 
-element.style {
- height: 109px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
+
+
+ul {
+  padding-inline-start: 0px;
 }

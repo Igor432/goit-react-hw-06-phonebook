@@ -39,6 +39,14 @@ onFilter = (e) => {
 }
 
 
+titleTag = {
+  fontSize: '45px',
+margin: '0px',
+display: 'block',
+
+}
+
+
 
 
 render(){
@@ -50,22 +58,15 @@ render(){
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
 
 
     >
-<h1 style={{
-  fontSize: '45px',
-  margin: '0px'
-}}>Phonebook</h1>
+<h1 style={{...this.titleTag}}>Phonebook</h1>
   <ContactForm onSubmit={this.onSubmit}/>
 
-  <h2 style={{
-    fontSize: '45px',
-    margin: '0px'
-
-  }}>Contacts</h2>
+  <h2 style={{...this.titleTag}}>Contacts</h2>
   
   <Filter onFilter={this.onFilter} contacts={this.state.contacts} />
   <ContactList Contacts={this.state.contacts} filterValue={this.state.filter}/>
