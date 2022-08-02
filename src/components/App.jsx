@@ -4,7 +4,7 @@ import ContactList from "./phonebook/ContactList";
 import ContactForm from "../components/phonebook/ContactForm";
 import { nanoid } from "nanoid";
 import style from './phonebook/phonebook.module.css'
-
+import Notiflix from "notiflix";
 
 class App extends Component {
 
@@ -16,24 +16,47 @@ class App extends Component {
   }
 
 
+
+
+  
+
+  
+
+
+
   onSubmit = (e) => {
     e.preventDefault();
     const target = e.target
     const name = target.name
     const value = name.value
     const numberVal = e.target.number.value
-    const { contacts } = this.state       
+    const { contacts } = this.state 
+  const allName= [];
 
-    if (name === contacts.name) {
-      console.log("The name already exists!") 
-    } else {
-   this.setState({contacts: [...contacts, {id: nanoid(), name: value, number: numberVal}]}, console.log(this.state.contacts)) 
-    }
-   e.target.reset();    
+contacts.forEach(contact => {
+allName.push(contact.name)
+})
+
+console.log(allName)
+
+
+if (allName.includes(value)) {
+  Notiflix.Notify.failure('The name already exists!')
+} else { 
+  this.setState({contacts: [...contacts, {id: nanoid(), name: value, number: numberVal}]}, e.target.reset()) 
 }
+   
+    
 
 
 
+
+  }
+
+       
+      
+      
+    
 
 
 onFilter = (e) => {
