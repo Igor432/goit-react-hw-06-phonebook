@@ -33,9 +33,9 @@ class App extends Component {
 onFilter = (e) => {
     
   const filterValue = e.target.value
-  console.log(filterValue)
+  
   this.setState({filter: filterValue})
-
+  console.log(this.state.filter)
 }
 
 
@@ -67,9 +67,8 @@ render(){
 
   }}>Contacts</h2>
   
-
-  
-  <ContactList Contacts={this.state.contacts}/>
+  <Filter onFilter={this.onFilter} contacts={this.state.contacts} />
+  <ContactList Contacts={this.state.contacts} filterValue={this.state.filter}/>
 
     </div>
   );

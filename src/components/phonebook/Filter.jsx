@@ -1,17 +1,13 @@
 import ContactElement from "./ContactElements"
 
 
-const Filter = ({onFilter, contacts, filter}) => {
+const Filter = ({onFilter}) => {
 
-
-    const filteredContact = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
-    console.log(filteredContact)
-
+    
 
         return (
 
             <div class='contacts'>
-            <p >Search</p>
             <input
               type="filter"
               name="filter"
@@ -23,19 +19,12 @@ const Filter = ({onFilter, contacts, filter}) => {
             
             />
 
-
 <ul class='contacts_list'>
     
-    { filteredContact.map(contact => (
-        <ContactElement contact={contact}/>
- 
-     ))}
+   
  
      </ul>
-
-
-
-             
+     
             </div>
             
 
@@ -44,5 +33,6 @@ const Filter = ({onFilter, contacts, filter}) => {
         
     
         
+
 
     export default Filter

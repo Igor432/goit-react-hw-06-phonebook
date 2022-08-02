@@ -2,22 +2,26 @@
 import ContactElement from "./ContactElements";
 
 
-const ContactList = ({Contacts}) => {
+const ContactList = ({Contacts, filterValue}) => {
+
+    const filteredContact = Contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
 
         
             return (
-                <ul class='contacts_list'>
-        
-           { Contacts.map(Contact => (
-                <ContactElement contact={Contact}/>     
-            ))}
-        
-            </ul>
-            )
-        
+
+<ul class='contacts_list'>
     
+    { filteredContact.map(filcontact => (
+        <ContactElement contact={filcontact}/>
+ 
+     ))}
+ 
+     </ul>
+             
+                 )
+            
         
-    
+
 
         
 }
