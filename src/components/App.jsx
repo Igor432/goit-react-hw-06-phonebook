@@ -15,15 +15,6 @@ class App extends Component {
     filter: '',
   }
 
-
-
-
-  
-
-  
-
-
-
   onSubmit = (e) => {
     e.preventDefault();
     const target = e.target
@@ -37,34 +28,32 @@ contacts.forEach(contact => {
 allName.push(contact.name)
 })
 
-console.log(allName)
-
 
 if (allName.includes(value)) {
   Notiflix.Notify.failure('The name already exists!')
 } else { 
   this.setState({contacts: [...contacts, {id: nanoid(), name: value, number: numberVal}]}, e.target.reset()) 
 }
-   
     
-
-
-
 
   }
 
        
-      
-      
     
-
-
 onFilter = (e) => {
     
   const filterValue = e.target.value
   
   this.setState({filter: filterValue})
   console.log(this.state.filter)
+}
+
+
+onDelete = (e) => {
+  /*
+  remainingArr = objArr.filter(data => data.name != 'Ragnar');
+console.log(remainingArr);
+*/
 }
 
 
