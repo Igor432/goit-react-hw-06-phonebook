@@ -3,7 +3,7 @@ import ContactElement from "./ContactElements";
 import style from '../phonebook/phonebook.module.css'
 
 
-const ContactList = ({Contacts, filterValue}) => {
+const ContactList = ({Contacts, filterValue, onDelete}) => {
 
 
 
@@ -15,7 +15,7 @@ const ContactList = ({Contacts, filterValue}) => {
 <ul className={style.contacts_list} >
     
     { filteredContact.map(filcontact => (
-        <ContactElement contact={filcontact}/>
+        <ContactElement id={filcontact.id} contact={filcontact} onDelete={onDelete}/>
  
      ))}
  

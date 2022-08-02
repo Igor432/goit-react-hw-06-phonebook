@@ -50,10 +50,13 @@ onFilter = (e) => {
 
 
 onDelete = (e) => {
-  /*
-  remainingArr = objArr.filter(data => data.name != 'Ragnar');
-console.log(remainingArr);
-*/
+
+const target = e.target
+const {contacts} = this.state
+
+
+console.log(target.id)
+
 }
 
 
@@ -78,7 +81,7 @@ render(){
   <h2 className={style.title_tag}>Contacts</h2>
   
   <Filter onFilter={this.onFilter} contacts={this.state.contacts} />
-  <ContactList Contacts={this.state.contacts} filterValue={this.state.filter}/>
+  <ContactList Contacts={this.state.contacts} filterValue={this.state.filter} onDelete={this.onDelete}/>
 
     </div>
   );
