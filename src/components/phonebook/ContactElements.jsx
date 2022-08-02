@@ -3,10 +3,6 @@ import style from '../phonebook/phonebook.module.css'
 
 const ContactElement = ({contact}) =>  {
  
-
-   
-
-
         return (
            
             <li key={contact.id} className={style.contact_item}>               
