@@ -5,9 +5,13 @@ import style from '../phonebook/phonebook.module.css'
 
 const ContactList = ({Contacts, filterValue, onDelete}) => {
 
+ let filteredContact = Contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
 
 
-    const filteredContact = Contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
+
+ 
+
+
         
             return (
                 <div className={style.contacts}>
@@ -15,7 +19,7 @@ const ContactList = ({Contacts, filterValue, onDelete}) => {
 <ul className={style.contacts_list} >
     
     { filteredContact.map(filcontact => (
-        <ContactElement id={filcontact.id} contact={filcontact} onDelete={onDelete}/>
+        <ContactElement key={filcontact.id} contact={filcontact} onDelete={onDelete}/>
  
      ))}
  

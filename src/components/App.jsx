@@ -51,11 +51,13 @@ onFilter = (e) => {
 
 onDelete = (e) => {
 
-const target = e.target
-const {contacts} = this.state
+  const {contacts} = this.state
+  const target = e.target
+const newContacts = contacts.filter(contact => contact.id !== target.id)
 
+  this.setState({contacts: newContacts})
+  console.log(contacts)
 
-console.log(target.id)
 
 }
 
