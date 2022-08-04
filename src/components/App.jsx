@@ -11,7 +11,7 @@ class App extends Component {
 
 
   state = {
-    contacts: JSON.parse(localStorage.getItem('contacts')),
+    contacts: [],
     filter: '',
  
   }
