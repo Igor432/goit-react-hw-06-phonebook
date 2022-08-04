@@ -54,10 +54,24 @@ onDelete = (e) => {
   const {contacts} = this.state
   const target = e.target
 const newContacts = contacts.filter(contact => contact.id !== target.id)
-
   this.setState({contacts: newContacts})
-  console.log(contacts)
 
+}
+
+
+componentDidMount () {
+this.setState({contacts: JSON.parse(localStorage.getItem('contacts'))})
+
+}
+
+
+componentDidUpdate (prevProps, prevState) {
+
+  if (this.state.contacts !== prevState.contacts) {
+
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    console.log(JSON.parse(localStorage.getItem('contacts')))
+  }
 
 }
 
