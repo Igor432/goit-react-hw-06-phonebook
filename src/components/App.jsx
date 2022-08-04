@@ -59,8 +59,8 @@ const newContacts = contacts.filter(contact => contact.id !== target.id)
 
 
 componentDidMount () {
-  const updatedState = JSON.parse(localStorage.getItem('state'))
-this.setState( updatedState)
+  const updatedState = JSON.parse(localStorage.getItem('contacts'))
+this.setState( {contacts: updatedState})
 console.log(updatedState)
 }
 
@@ -69,7 +69,8 @@ componentDidUpdate (prevProps, prevState) {
 
   if (this.state !== prevState.state) {
 
-    localStorage.setItem('state', JSON.stringify(this.state))
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    
   }
 
 }
