@@ -8,13 +8,9 @@ const ContactList = ({Contacts, filterValue, onDelete}) => {
  let filteredContact = Contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
 
 
-
- 
-
-
         
-            return (
-                <div className={style.contacts}>
+return (
+  <div className={style.contacts}>
 
 <ul className={style.contacts_list} >
     
