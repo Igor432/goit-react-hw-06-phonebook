@@ -11,7 +11,7 @@ class App extends Component {
 
 
   state = {
-    contacts: [],
+    contacts: JSON.parse(localStorage.getItem('contacts')),
     filter: '',
  
   }
@@ -58,24 +58,23 @@ const newContacts = contacts.filter(contact => contact.id !== target.id)
 
 }
 
-
+/*
 componentDidMount () {
 
-
+  this.setState({filter: ''})
 const updatedState = JSON.parse(localStorage.getItem('contacts'))
 this.setState({contacts: updatedState})
-this.setState({filter: ''})
+
 console.log(updatedState)
 }
 
-
+*/
 
 componentDidUpdate (prevProps, prevState) {
 
-  if (this.state !== prevState.state) {
+  if (this.state !== prevState.state ) {
 
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-    
   }
 
 }
