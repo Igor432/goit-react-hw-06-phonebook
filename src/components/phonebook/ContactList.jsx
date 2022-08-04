@@ -5,7 +5,7 @@ import style from '../phonebook/phonebook.module.css'
 
 const ContactList = ({Contacts, filterValue, onDelete}) => {
 
- let filteredContact = Contacts.filter((contact) => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
+ const filteredContact = Contacts.filter((contact) => contact.name.toLowerCase().includes(filterValue.toLowerCase()))
 
 
         

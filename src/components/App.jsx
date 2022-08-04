@@ -58,17 +58,17 @@ const newContacts = contacts.filter(contact => contact.id !== target.id)
 
 }
 
-/*
+
 componentDidMount () {
 
-  this.setState({filter: ''})
-const updatedState = JSON.parse(localStorage.getItem('contacts'))
+let updatedState = [];
+updatedState = JSON.parse(localStorage.getItem('contacts'))
 this.setState({contacts: updatedState})
 
 console.log(updatedState)
 }
 
-*/
+
 
 componentDidUpdate (prevProps, prevState) {
 
