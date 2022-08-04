@@ -45,7 +45,6 @@ onFilter = (e) => {
   const filterValue = e.target.value
   
   this.setState({filter: filterValue})
-  console.log(this.state.filter)
 }
 
 
@@ -60,17 +59,17 @@ const newContacts = contacts.filter(contact => contact.id !== target.id)
 
 
 componentDidMount () {
-this.setState({contacts: JSON.parse(localStorage.getItem('contacts'))})
-
+  const updatedState = JSON.parse(localStorage.getItem('state'))
+this.setState( updatedState)
+console.log(updatedState)
 }
 
 
 componentDidUpdate (prevProps, prevState) {
 
-  if (this.state.contacts !== prevState.contacts) {
+  if (this.state !== prevState.state) {
 
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-    console.log(JSON.parse(localStorage.getItem('contacts')))
+    localStorage.setItem('state', JSON.stringify(this.state))
   }
 
 }
