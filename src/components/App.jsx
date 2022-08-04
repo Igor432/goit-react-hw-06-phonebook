@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    updatedState: []
+ 
   }
 
   onSubmit = (e) => {
@@ -60,10 +60,14 @@ const newContacts = contacts.filter(contact => contact.id !== target.id)
 
 
 componentDidMount () {
-  const updatedState = JSON.parse(localStorage.getItem('contacts'))
+
+
+const updatedState = JSON.parse(localStorage.getItem('contacts'))
 this.setState({contacts: updatedState})
+this.setState({filter: ''})
 console.log(updatedState)
 }
+
 
 
 componentDidUpdate (prevProps, prevState) {
