@@ -13,7 +13,6 @@ class App extends Component {
   state = {
     contacts: [],
     filter: '',
- 
   }
 
   onSubmit = (e) => {
@@ -61,11 +60,14 @@ const newContacts = contacts.filter(contact => contact.id !== target.id)
 
 componentDidMount () {
 
-let updatedState = [];
-updatedState = JSON.parse(localStorage.getItem('contacts'))
-this.setState({contacts: updatedState})
+if (localStorage.getItem('contacts') === null) {
+  this.setState({contacts: []})
 
-console.log(updatedState)
+} else {
+
+this.setState({contacts: JSON.parse(localStorage.getItem('contacts') )})
+console.log(JSON.parse(localStorage.getItem('contacts')))
+}
 }
 
 
