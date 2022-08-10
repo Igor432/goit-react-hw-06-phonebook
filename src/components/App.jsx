@@ -1,38 +1,36 @@
-import { Component } from "react";
 import Filter from "./phonebook/Filter";
 import ContactList from "./phonebook/ContactList";
 import ContactForm from "../components/phonebook/ContactForm";
 import { nanoid } from "nanoid";
 import style from './phonebook/phonebook.module.css'
 import Notiflix from "notiflix";
-
-class App extends Component {
-
+import { useEffect, useState } from "react";
 
 
-  state = {
-    contacts: [],
-    filter: '',
-  }
+function App () {
 
-  onSubmit = (e) => {
+
+const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('contacts')))
+const [filter, setFilter] = useState('')
+
+
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    const target = e.target
-    const name = target.name
-    const value = name.value
+    const name = e.target.name.value
     const numberVal = e.target.number.value
-    const { contacts } = this.state 
-  const allName= [];
+    const allName = [];
 
 contacts.forEach(contact => {
 allName.push(contact.name)
 })
 
 
-if (allName.includes(value)) {
+if (allName.includes(name)) {
   Notiflix.Notify.failure('The name already exists!')
 } else { 
-  this.setState({contacts: [...contacts, {id: nanoid(), name: value, number: numberVal}]}, e.target.reset()) 
+setContacts(state => [...state, {id: nanoid(), name: name, number: numberVal}])
+e.target.reset()
 }
     
 
@@ -40,50 +38,50 @@ if (allName.includes(value)) {
 
        
     
-onFilter = (e) => {
+const onFilter = (e) => {
     
   const filterValue = e.target.value
   
-  this.setState({filter: filterValue})
+  setFilter(filterValue)
 }
 
 
-onDelete = (e) => {
+const onDelete = (e) => {
 
-  const {contacts} = this.state
-  const target = e.target
+const target = e.target
 const newContacts = contacts.filter(contact => contact.id !== target.id)
-  this.setState({contacts: newContacts})
+  setContacts(newContacts)
 
 }
 
 
-componentDidMount () {
+
+useEffect(() => {
+  localStorage.setItem('contacts', JSON.stringify(contacts))
+  console.log(JSON.parse(localStorage.getItem('contacts')))
+
+  }, [contacts])
+
+
+
+
+
+
+/*
+const componentDidMount = () => {
 
 if (localStorage.getItem('contacts') === null) {
   this.setState({contacts: []})
 
-} else {
-
-this.setState({contacts: JSON.parse(localStorage.getItem('contacts') )})
-console.log(JSON.parse(localStorage.getItem('contacts')))
 }
 }
+*/
 
 
 
-componentDidUpdate (prevProps, prevState) {
-
-  if (this.state.contacts !== prevState.contacts ) {
-
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-  }
-
-}
 
 
 
-render(){
   return (
     <div
       style={{
@@ -98,17 +96,17 @@ render(){
 
     >
 <h1 className={style.title_tag}>Phonebook</h1>
-  <ContactForm onSubmit={this.onSubmit}/>
+  <ContactForm onSubmit={onSubmit}/>
 
   <h2 className={style.title_tag}>Contacts</h2>
   
-  <Filter onFilter={this.onFilter} contacts={this.state.contacts} />
-  <ContactList Contacts={this.state.contacts} filterValue={this.state.filter} onDelete={this.onDelete}/>
+  <Filter onFilter={onFilter} contacts={contacts} />
+  <ContactList Contacts={contacts} filterValue={filter} onDelete={onDelete}/>
 
     </div>
   );
 
 }
-};
+
 
 export default App
