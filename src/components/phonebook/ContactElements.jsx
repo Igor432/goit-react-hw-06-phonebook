@@ -1,16 +1,26 @@
-import style from '../phonebook/phonebook.module.css'
+import style from '../phonebook/phonebook.module.css';
+import PropTypes from 'prop-types';
 
+const ContactElement = ({ contact, onDelete }) => {
+  return (
+    <li key={contact.id} className={style.contact_item}>
+      <p class={style.item_name}>{contact.name} </p>{' '}
+      <p class={style.item_number}>{contact.number}</p>
+      <button
+        id={contact.id}
+        class={style.delete_button}
+        type="button"
+        onClick={onDelete}
+      >
+        Delete
+      </button>
+    </li>
+  );
+};
 
-const ContactElement = ({contact, onDelete}) =>  {
- 
-        return (
-           
-            <li key={contact.id} className={style.contact_item}>               
-            <p class={style.item_name} >{contact.name} </p> <p class={style.item_number}>{contact.number}</p>
-            <button id={contact.id} class={style.delete_button} type="button" onClick={onDelete}>Delete</button>
-            </li>)
-    
-       }
+ContactElement.propTypes = {
+  contact: PropTypes.object,
+  onDelete: PropTypes.func,
+};
 
-
-    export default ContactElement
+export default ContactElement;
