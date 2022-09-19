@@ -3,24 +3,25 @@ import style from '../phonebook/phonebook.module.css';
 import { useSelector } from 'react-redux';
 
 
+
 const ContactList = () => {
 
-const contacts = useSelector(state => state.contacts)
-const filter = useSelector(state => state.filter)
 
+  const contacts = useSelector(contacts => contacts.items)
+console.log(contacts)
+/*
+if (filter) {
 const filteredContact = () => {
   return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-  };
-
-
-  if (filter) {
-
+  }
+}
+*/
   return (
     <div className={style.contacts}>
       <ul className={style.contacts_list}>
-        {filteredContact().map(filcontact => (
+        {contacts.map(filcontact => (
           <ContactElement
             key={filcontact.id}
             contact={filcontact}
@@ -30,8 +31,14 @@ const filteredContact = () => {
       </ul>
     </div>
   )
+
 }
-}
+
+ 
+
+
+
+
 
 /*
 ContactList.propTypes = {

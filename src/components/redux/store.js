@@ -8,8 +8,6 @@ const enhancer = devToolsEnhancer();
 
 
 export const store = configureStore({
-    reducer: {
-        rootReducer
-    },
+    reducer: rootReducer,
     enhancer
 })

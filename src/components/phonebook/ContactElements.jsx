@@ -13,7 +13,7 @@ const ContactElement = ({ contact }) => {
 
   return (
     <li key={contact.id} className={style.contact_item}>
-      <p class={style.item_name}>{contact.name} </p>{' '}
+      <p class={style.item_name}>{contact.firstname} </p>{' '}
       <p class={style.item_number}>{contact.number}</p>
       <button
         id={contact.id}
