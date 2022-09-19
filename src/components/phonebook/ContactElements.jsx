@@ -7,7 +7,9 @@ const ContactElement = ({ contact }) => {
 
   const dispatch = useDispatch();
 
-  const onDelete = dispatch(deleteContact(contact.id))
+  const onDelete = e => {
+    dispatch(deleteContact(e.target.id))
+  } 
 
 
 

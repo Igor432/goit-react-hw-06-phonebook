@@ -25,7 +25,7 @@ const filteredContact = () => {
           <ContactElement
             key={filcontact.id}
             contact={filcontact}
-            onDelete=''
+            
           />
         ))}
       </ul>
