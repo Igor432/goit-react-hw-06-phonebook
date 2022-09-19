@@ -1,7 +1,20 @@
 import style from '../phonebook/phonebook.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch } from "react-redux";
+import { addContact } from '../redux/actions'
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+
+  const dispatch = useDispatch();
+
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const numberVal = e.target.number.value;
+    dispatch(addContact(name, numberVal));
+  }
+
+
   return (
     <div class="main_div">
       <form onSubmit={onSubmit} className={style.forma}>
@@ -31,9 +44,10 @@ const ContactForm = ({ onSubmit }) => {
     </div>
   );
 };
-
+/*
 ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };
+*/
 
 export default ContactForm;

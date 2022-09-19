@@ -1,7 +1,16 @@
 import style from '../phonebook/phonebook.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setContactFilter } from 'components/redux/actions';
 
-const Filter = ({ onFilter }) => {
+const Filter = () => {
+
+const dispatch = useDispatch()
+
+const onFilter = e => {
+  console.log(e.target.value)
+  dispatch(setContactFilter(e.target.value))
+}
+
   return (
     <div className={style.filter}>
       <input
@@ -16,9 +25,10 @@ const Filter = ({ onFilter }) => {
     </div>
   );
 };
-
+/*
 Filter.propTypes = {
   onFilter: PropTypes.func,
 };
+*/
 
 export default Filter;
