@@ -1,19 +1,25 @@
 import style from '../phonebook/phonebook.module.css';
-import { useDispatch } from "react-redux";
-import { addContact } from '../redux/actions'
+import { useDispatch } from 'react-redux';
+import { addContact } from '../redux/actions';
+import { useSelector } from 'react-redux';
+import Notiflix from 'notiflix';
 
 const ContactForm = () => {
-
   const dispatch = useDispatch();
-
+  const contacts = useSelector(contacts => contacts.items)
 
   const onSubmit = e => {
     e.preventDefault();
     const name = e.target.name.value;
     const numberVal = e.target.number.value;
-    dispatch(addContact(name, numberVal));
-  }
+   
 
+const result = contacts.find(contact => contact.firstname === name)
+if (result) {
+  return  Notiflix.Notify.failure('The name already exists!');
+}
+dispatch(addContact(name, numberVal));
+  };
 
   return (
     <div class="main_div">
