@@ -2,43 +2,33 @@ import ContactElement from './ContactElements';
 import style from '../phonebook/phonebook.module.css';
 import { useSelector } from 'react-redux';
 
-
-
 const ContactList = () => {
+  const contacts = useSelector(contacts => contacts.items);
+  const filter = useSelector(contacts => contacts.filter)
+  console.log(contacts);
+  
 
 
-  const contacts = useSelector(contacts => contacts.items)
-console.log(contacts)
-/*
-if (filter) {
-const filteredContact = () => {
+
+ const filtered = () => {
   return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+      contact.firstname.toLowerCase().includes(filter.toLowerCase())
+      
+  )
   }
-}
-*/
+
+
+
   return (
     <div className={style.contacts}>
       <ul className={style.contacts_list}>
-        {contacts.map(filcontact => (
-          <ContactElement
-            key={filcontact.id}
-            contact={filcontact}
-            
-          />
+        {filtered().map(contact => (
+          <ContactElement contact={contact} key={contact.id} id={contact.id} />
         ))}
       </ul>
     </div>
-  )
-
-}
-
- 
-
-
-
-
+  );
+};
 
 /*
 ContactList.propTypes = {

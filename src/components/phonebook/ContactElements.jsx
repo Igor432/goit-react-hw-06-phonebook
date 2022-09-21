@@ -1,24 +1,21 @@
 import { deleteContact } from 'components/redux/actions';
 import { useDispatch } from 'react-redux';
 import style from '../phonebook/phonebook.module.css';
+import PropTypes from 'prop-types';
 
-
-const ContactElement = ({ contact }) => {
-
+const ContactElement = ({ contact, id }) => {
   const dispatch = useDispatch();
 
   const onDelete = e => {
-    dispatch(deleteContact(e.target.id))
-  } 
-
-
+    dispatch(deleteContact(e.target.id));
+  };
 
   return (
-    <li key={contact.id} className={style.contact_item}>
+    <li key={id} className={style.contact_item}>
       <p class={style.item_name}>{contact.firstname} </p>{' '}
       <p class={style.item_number}>{contact.number}</p>
       <button
-        id={contact.id}
+        id={id}
         class={style.delete_button}
         type="button"
         onClick={onDelete}
@@ -30,11 +27,10 @@ const ContactElement = ({ contact }) => {
 };
 
 
-/*
 ContactElement.propTypes = {
-  contact: PropTypes.object,
-  onDelete: PropTypes.func,
+  contact: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
 };
-*/
+
 
 export default ContactElement;
