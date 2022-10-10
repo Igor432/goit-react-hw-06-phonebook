@@ -1,24 +1,37 @@
 import style from '../phonebook/phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/actions';
+import { addContact } from '../redux/ContactSlice';
 import { useSelector } from 'react-redux';
+import { getItems } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
+import { useState } from 'react';
 
 const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const items = useSelector(getItems);
+
   const dispatch = useDispatch();
-  const contacts = useSelector(contacts => contacts.items)
+
+  const onChange = e => {
+    e.preventDefault();
+    if (e.target.name === 'number') {
+      setNumber(e.target.value);
+    } else {
+      setName(e.target.value);
+    }
+  };
 
   const onSubmit = e => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const numberVal = e.target.number.value;
-   
+    const contactList = items.contacts;
+    const result = contactList.find(contact => contact.name === name);
+    if (result) {
+      return Notiflix.Notify.failure('The name already exists!');
+    }
 
-const result = contacts.find(contact => contact.firstname === name)
-if (result) {
-  return  Notiflix.Notify.failure('The name already exists!');
-}
-dispatch(addContact(name, numberVal));
+    dispatch(addContact(name, number));
+    console.log(items);
   };
 
   return (
@@ -32,6 +45,7 @@ dispatch(addContact(name, numberVal));
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           className={style.name_input}
+          onChange={onChange}
         />
         <p class="input_tag">Number</p>
         <input
@@ -41,6 +55,7 @@ dispatch(addContact(name, numberVal));
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           className={style.number_input}
+          onChange={onChange}
         />
 
         <button type="submit" className={style.submit_button}>
@@ -50,10 +65,5 @@ dispatch(addContact(name, numberVal));
     </div>
   );
 };
-/*
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-};
-*/
 
 export default ContactForm;

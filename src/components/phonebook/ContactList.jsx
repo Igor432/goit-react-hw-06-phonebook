@@ -1,23 +1,20 @@
 import ContactElement from './ContactElements';
 import style from '../phonebook/phonebook.module.css';
 import { useSelector } from 'react-redux';
+import { getItems, getFilter } from '../redux/selectors';
 
 const ContactList = () => {
-  const contacts = useSelector(contacts => contacts.items);
-  const filter = useSelector(contacts => contacts.filter)
-  console.log(contacts);
-  
+  const items = useSelector(getItems);
 
+  const contactList = items.contacts;
+  const filter = useSelector(getFilter);
 
-
- const filtered = () => {
-  return contacts.filter(contact =>
-      contact.firstname.toLowerCase().includes(filter.toLowerCase())
-      
-  )
-  }
-
-
+  const filtered = () => {
+    const filterValue = filter.filter;
+    return contactList.filter(contact =>
+      contact.name.toLowerCase().includes(filterValue.toLowerCase())
+    );
+  };
 
   return (
     <div className={style.contacts}>
@@ -29,13 +26,5 @@ const ContactList = () => {
     </div>
   );
 };
-
-/*
-ContactList.propTypes = {
-  Contacts: PropTypes.array,
-  filterValue: PropTypes.string,
-  onDelete: PropTypes.func,
-};
-*/
 
 export default ContactList;
