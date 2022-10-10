@@ -5,10 +5,12 @@ import { useSelector } from 'react-redux';
 import { getItems } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
   const items = useSelector(getItems);
 
   const dispatch = useDispatch();
@@ -30,7 +32,15 @@ const ContactForm = () => {
       return Notiflix.Notify.failure('The name already exists!');
     }
 
-    dispatch(addContact(name, number));
+    const contact = {
+      name: name,
+      number: number,
+      id: nanoid()
+    }
+setName('')
+setNumber('')
+
+    dispatch(addContact(contact));
     console.log(items);
   };
 
