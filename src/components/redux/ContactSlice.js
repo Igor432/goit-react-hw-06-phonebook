@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     contacts: [],
+    filter: ''
 };
 
 export const itemSlice = createSlice({
@@ -18,9 +19,19 @@ export const itemSlice = createSlice({
                 contact => contact.id === action.payload
             );
             state.contacts.splice(index, 1);
+
         },
+        setContactFilter(state, action) {
+            state.filter = action.payload;
+        }
     },
 });
 
+
+
+
+
+
+
 export const contactReducer = itemSlice.reducer;
-export const { addContact, deleteContact } = itemSlice.actions;
+export const { addContact, deleteContact, setContactFilter } = itemSlice.actions;

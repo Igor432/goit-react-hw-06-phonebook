@@ -37,10 +37,11 @@ const ContactForm = () => {
       number: number,
       id: nanoid()
     }
-setName('')
-setNumber('')
+
 
     dispatch(addContact(contact));
+    setName('')
+    setNumber('')
     console.log(items);
   };
 
@@ -56,6 +57,7 @@ setNumber('')
           required
           className={style.name_input}
           onChange={onChange}
+          value={name}
         />
         <p class="input_tag">Number</p>
         <input
@@ -66,6 +68,8 @@ setNumber('')
           required
           className={style.number_input}
           onChange={onChange}
+          value={number}
+
         />
 
         <button type="submit" className={style.submit_button}>
