@@ -6,7 +6,7 @@ const initialState = {
 
 export const itemSlice = createSlice({
     name: 'contacts',
-    initialState: initialState.contacts,
+    initialState: initialState,
     reducers: {
         addContact: {
             reducer(state, action) {

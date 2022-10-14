@@ -5,16 +5,15 @@ import { getFilter, getContacts } from '../redux/selectors';
 
 const ContactList = () => {
   const contactsState = useSelector(getContacts);
-  const contactList = contactsState.contacts;
   const filter = useSelector(getFilter);
 
-  console.log(filter);
+  console.log('Filter: ' + filter)
+  console.log(contactsState);
 
   const filtered = () => {
-    const filterValue = filter.filter;
 
-    return contactList.filter(contact =>
-      contact.name.toLowerCase().includes(filterValue.toLowerCase())
+    return contactsState.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 

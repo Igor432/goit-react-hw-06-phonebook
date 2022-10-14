@@ -11,7 +11,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const items = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
 
   const dispatch = useDispatch();
 
@@ -26,8 +26,7 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const contactList = items.contacts;
-    const result = contactList.find(contact => contact.name === name);
+    const result = contacts.find(contact => contact.name === name);
     if (result) {
       return Notiflix.Notify.failure('The name already exists!');
     }
@@ -40,7 +39,7 @@ const ContactForm = () => {
     dispatch(addContact(contact));
     setName('');
     setNumber('');
-    console.log(items);
+    console.log(contacts);
   };
 
   return (
