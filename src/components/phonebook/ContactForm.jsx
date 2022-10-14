@@ -2,7 +2,7 @@ import style from '../phonebook/phonebook.module.css';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../redux/ContactSlice';
 import { useSelector } from 'react-redux';
-import { getItems } from 'components/redux/selectors';
+import { getContacts } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
@@ -11,7 +11,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const items = useSelector(getItems);
+  const items = useSelector(getContacts);
 
   const dispatch = useDispatch();
 
@@ -35,13 +35,11 @@ const ContactForm = () => {
     const contact = {
       name: name,
       number: number,
-      id: nanoid()
-    }
-
-
+      id: nanoid(),
+    };
     dispatch(addContact(contact));
-    setName('')
-    setNumber('')
+    setName('');
+    setNumber('');
     console.log(items);
   };
 
@@ -69,7 +67,6 @@ const ContactForm = () => {
           className={style.number_input}
           onChange={onChange}
           value={number}
-
         />
 
         <button type="submit" className={style.submit_button}>
