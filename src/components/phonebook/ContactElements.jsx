@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const ContactElement = ({ contact, id }) => {
   const dispatch = useDispatch();
 
-  const onDelete = e => {
-    dispatch(deleteContact(e.target.id));
+  const onDelete = () => {
+    dispatch(deleteContact(id));
   };
 
   return (
@@ -15,7 +15,7 @@ const ContactElement = ({ contact, id }) => {
       <p class={style.item_name}>{contact.name} </p>{' '}
       <p class={style.item_number}>{contact.number}</p>
       <button
-        id={id}
+       
         class={style.delete_button}
         type="button"
         onClick={onDelete}
