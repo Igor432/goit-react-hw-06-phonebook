@@ -39,7 +39,6 @@ const ContactForm = () => {
     dispatch(addContact(contact));
     setName('');
     setNumber('');
-    console.log(contacts);
   };
 
   return (
